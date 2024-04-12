@@ -1,10 +1,10 @@
 public class GetAccount {
 
     @AuraEnabled(cacheable=true)
-    public static List<Account> getAccount(String ContextId){
+    public static List<Contact> getAccount(String ContextId){
         return [
-            SELECT Id,Name
-            FROM Account 
+            SELECT Id,Name,Account.name
+            FROM Contact 
             // WHERE axisltd_LoanApplicationId__c = :ContextId
             WITH SYSTEM_MODE
         ];      
