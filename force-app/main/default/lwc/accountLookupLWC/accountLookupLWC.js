@@ -13,7 +13,6 @@ export default class accountLookupLWC extends OmniscriptBaseMixin(OmniscriptSele
         let contextId = this.jsonData.ContextId;
         getAccount({ ContextId: contextId })
             .then((result) => { 
-                console.log('result::',result);
                 console.log('result::',JSON.stringify(result));
                 result.forEach(currentItem => {
                     this.picklistdata.push({
