@@ -1,17 +1,17 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
-  check-bats-version:
+  greeting_job:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test-group: [1, 2]
-        node: [14, 16]
+    env:
+      Greeting: Hello
     steps:
-      - run: echo "Mock test logs" > test-job-${{ strategy.job-index }}.txt
-      - name: Upload logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: Build log for job ${{ strategy.job-index }}
-          path: test-job-${{ strategy.job-index }}.txt
+      - name: "Say Hello Mona it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
