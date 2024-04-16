@@ -4,10 +4,14 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test-group: [1, 2]
+        node: [14, 16]
     steps:
-      - name: Generate 0 or 1
-        id: generate_number
-        run:  echo "random_number=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
-      - name: Pass or fail
-        run: 
-          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then exit 0; else exit 1; fi
+      - run: echo "Mock test logs" > test-job-${{ strategy.job-index }}.txt
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build log for job ${{ strategy.job-index }}
+          path: test-job-${{ strategy.job-index }}.txt
