@@ -4,6 +4,7 @@ on: [push]
 env:
   DAY_OF_WEEK: Monday
   MY_NAME: Pratham_Dhamecha
+  Greeting: Hii
 
 jobs:
   greeting_job:
@@ -15,6 +16,6 @@ jobs:
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: |
             echo "$Greeting $First_Name. Today is $DAY_OF_WEEK! my password is ${{ secrets.SuperSecret }}."
-            echo "variable is ${{var.MY_NAME}}"
+            echo "variable is ${{env.MY_NAME}}"
         env:
           First_Name: Mona
