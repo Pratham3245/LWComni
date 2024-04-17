@@ -1,0 +1,23 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:   
+  pull_request:
+    branches:
+      - origin/Developer  
+env:
+  DAY_OF_WEEK: Monday
+  MY_NAME: Pratham_Dhamecha
+  Greeting: Hii
+
+jobs:
+  greeting_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Say Hello Mona it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
+        run: |
+            echo "$Greeting , ${{env.Greeting}} $First_Name. Today is $DAY_OF_WEEK! my password is ${{ secrets.SuperSecret }}."
+            echo "variable is ${{env.MY_NAME}}"
+        env:
+          First_Name: Mona
