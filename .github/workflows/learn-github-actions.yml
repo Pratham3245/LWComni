@@ -2,7 +2,8 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 env:
-  DAY_OF_WEEK: Monday
+  DAY_OF_WEEK: Monday,
+  MY_NAME : Pratham dHAMECHA
 
 jobs:
   greeting_job:
