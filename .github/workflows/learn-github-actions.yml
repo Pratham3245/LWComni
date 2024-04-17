@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on:   
   pull_request:
     branches:
-      - origin/Developer  
+      - main  
 env:
   DAY_OF_WEEK: Monday
   MY_NAME: Pratham_Dhamecha
