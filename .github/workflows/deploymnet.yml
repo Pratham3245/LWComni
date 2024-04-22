@@ -20,11 +20,11 @@ jobs:
 
       - name: Authorize Dev Org
         run: |
-          sfdx auth:web:login -a DevOrg -r https://getoncrm-4c-dev-ed.develop.my.salesforce.com/
+          sfdx org:login:web -a DevOrg -r https://getoncrm-4c-dev-ed.develop.my.salesforce.com/
 
       - name: Authorize QA Org
         run: |
-          sfdx auth:web:login -a QAOrg -r https://pratham1-dev-ed.develop.my.salesforce.com/
+          sfdx org:login:web -a QAOrg -r https://pratham1-dev-ed.develop.my.salesforce.com/
 
       - name: Deploy to QA Org
         run: |
