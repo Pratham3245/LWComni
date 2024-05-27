@@ -1,4 +1,4 @@
-public class GetAccount {
+public with sharing class GetAccount {
 
     @AuraEnabled(cacheable=true)
     public static List<Contact> getAccount(String ContextId){
@@ -10,4 +10,4 @@ public class GetAccount {
         ];      
     }
 
-}
+}x
