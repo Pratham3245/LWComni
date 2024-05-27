@@ -6,7 +6,7 @@ public with sharing class GetAccount {
             SELECT Id,Name,Account.name
             FROM Contact 
             // WHERE axisltd_LoanApplicationId__c = :ContextId
-            WITH SYSTEM_MODE
+            // WITH SYSTEM_MODE
         ];      
     }
 

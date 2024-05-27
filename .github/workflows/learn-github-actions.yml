@@ -1,6 +1,9 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:   
+  pull_request:
+    branches:
+      - main  
 env:
   DAY_OF_WEEK: Monday
   MY_NAME: Pratham_Dhamecha
@@ -9,8 +12,7 @@ env:
 jobs:
   greeting_job:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
+    
     steps:
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}

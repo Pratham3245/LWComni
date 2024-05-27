@@ -1,0 +1,32 @@
+name: Salesforce Deployment to QA
+
+on:   
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy_to_qa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Salesforce CLI
+        uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-version: 'latest'
+
+      - name: Authorize Dev Org
+        run: |
+          sfdx org:login:web -a DevOrg -r https://getoncrm-4c-dev-ed.develop.my.salesforce.com/
+
+      - name: Authorize QA Org
+        run: |
+          sfdx org:login:web -a QAOrg -r https://pratham1-dev-ed.develop.my.salesforce.com/
+
+      - name: Deploy to QA Org
+        run: |
+          sfdx force:source:deploy -p force-app -u QAOrg
+
